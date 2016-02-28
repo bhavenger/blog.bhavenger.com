@@ -1,4 +1,4 @@
-baseurl = "http://blog.bhavenger.com"
+baseurl = "http://blog.bhavenger.com/"
 languageCode = "en-us"
 title = "Techologies 101"
 MetaDataFormat = "toml"
