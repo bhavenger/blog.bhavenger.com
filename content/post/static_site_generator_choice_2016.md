@@ -3,6 +3,7 @@ date = "2016-02-27T20:03:10+03:00"
 description = "Генераторы статических сайтов для тех, кто не хочет заморачиваться"
 keywords = "static site generator, jekyll, hugo, hero"
 title = "Выбор генератора статических сайтов в 2016"
+tags = ["blog", "tools"]
 +++
 ### Муки выбора
 Решение о начале ведения блога подтолкнуло меня к изучению современных генераторов статических сайтов. Потому-что в 2016 году довольно глупо вести небольшой блог иначе.
@@ -46,9 +47,9 @@ https://www.staticgen.com/ и https://staticsitegenerators.net/.
 		Начало работы после установки стандартное:
 
 		```
-		$ hexo init <folder>
-		$ cd <folder>
-		$ npm install
+		~ $ hexo init <folder>
+		~ $ cd <folder>
+		~ $ npm install
 		```
 		В общем и целом завести блог на hexo у меня удалось за пару минут.
 
@@ -58,14 +59,14 @@ https://www.staticgen.com/ и https://staticsitegenerators.net/.
 	* Простота установки и начала работы - в случае mac osx установка очень проста:
 
 		```
-		brew update && brew install hugo
+		~ $ brew update && brew install hugo
 		```
 
 		Начало работы после установки стандартное:
 		```
-		$ hugo new site path/to/site
-		$ cd path/to/site
-		$ hugo server
+		~ $ hugo new site path/to/site
+		~ $ cd path/to/site
+		~ $ hugo server
 		```
 	* Темы и плагины - на официальном сайте можно найти уже около 70 тем оформления. Для тем доступны хештеги, скриншот, демосайт и  описание, иногда довольно обширное. Оф. сайт имеет отличную инструкцию по установке новых тем.
 
