@@ -1,9 +1,8 @@
 +++
 date = "2016-02-27T20:03:10+03:00"
-description = ""
+description = "Генераторы статических сайтов для тех, кто не хочет заморачиваться"
 keywords = "static site generator, jekyll, hugo, hero"
 title = "Выбор генератора статических сайтов в 2016"
-
 +++
 ### Муки выбора
 Решение о начале ведения блога подтолкнуло меня к изучению современных генераторов статических сайтов. Потому-что в 2016 году довольно глупо вести небольшой блог иначе.
@@ -43,9 +42,9 @@ https://www.staticgen.com/ и https://staticsitegenerators.net/.
 		```
 		~ $ brew install npm
 		```
-	
+
 		Начало работы после установки стандартное:
-		
+
 		```
 		$ hexo init <folder>
 		$ cd <folder>
@@ -61,7 +60,7 @@ https://www.staticgen.com/ и https://staticsitegenerators.net/.
 		```
 		brew update && brew install hugo
 		```
-		
+
 		Начало работы после установки стандартное:
 		```
 		$ hugo new site path/to/site

@@ -1,8 +1,8 @@
 +++
 date = "2016-02-27T19:48:28+03:00"
-description = ""
+description = "О блоге и обо мне"
 keywords = []
-title = "about"
+title = "Обо мне и блоге"
 
 +++
 Привет,
