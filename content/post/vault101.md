@@ -1,9 +1,9 @@
 +++
 date = "2016-07-20T22:19:01+03:00"
-description = ""
+description = "Как не хранить секреты где придётся, или зачем нам Hashicorp Vault"
 draft = true
 tags = ["vault", "hashicorp", "security"]
-title = "vault101"
+title = "Vault101"
 topics = []
 
 +++
