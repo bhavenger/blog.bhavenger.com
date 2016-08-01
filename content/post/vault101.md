@@ -184,7 +184,7 @@ vault token-revoke -h
 - Старт или рестарт самого consul-template.  
 - Каждые (TimeToLive секрета/2) секунд после старта consul-template.  
   
-Чтобы не вводить свой рабочий токен постоянно, его можно положить в $HOME/.vault-token или в переменную окружения VAULT_TOKEN.
+Чтобы не вводить свой рабочий токен постоянно, его можно положить в $HOME/.vault-token или в переменную окружения VAULT_TOKEN. Тут надо оговориться, что я по умолчанию считаю рабочую станцию админа защищённой (зашифрованные диски, отсутствие гостевого входа, автоблокирование через минуту неактивности). Если это не так - то стоит отказаться от этой идеи.
 
 ## Наш процесс работы:
 Нам не подошёл официальный процесс работы с Vault по причине излишней трудоёмкости внедрения Vault в эксплуатацию сервиса. Поделюсь нашими решениями и ответами на возникающие вопросы в процессе внедрения Vault.
@@ -264,7 +264,53 @@ base            appname
 login           appname
 password        difficult_password
 ```
-Всё работает, мы готовы использовать наш токен в системах автоматизации.
+Всё работает, мы готовы использовать наш токен в системах автоматизации. Приведу примеры для популярных систем.
 
-Спасибо за потраченное время, надеюсь, это было полезно.
+#### Просто curl:
+```  
+$ curl \
+    -H "X-Vault-Token:cb347ae0-9eb4-85d1-c556-df43e82be4b0" \
+    https://vault.service.consul:8200/v1/secret/service_name/prod/database
+```
+
+#### Ansible (мы используем https://github.com/jhaals/ansible-vault):
+Настраиваем окружение:
+```
+$ export VAULT_ADDR=https://vault.service.consul:8200
+$ export VAULT_TOKEN=cb347ae0-9eb4-85d1-c556-df43e82be4b0
+```
+Используем переменные из Vault в роли:
+```
+database_password: "{{ lookup('vault', 'secret/service_name/prod/database', 'password') }}"
+```
+Мы делаем запросы к vault только на уровне group_vars/group_name. Это удобно и позволяет не искать переменные по роли.
+
+#### Chef:
+Hashicorp в своём блоге описали несколько путей использования секретов из Vault в своих chef-кукбуках - https://www.hashicorp.com/blog/using-hashicorp-vault-with-chef.html
+
+#### Puppet:
+Для puppet существует прекрасный модуль https://github.com/jsok/hiera-vault из документации к которому понятен процесс использования секретов из Vault.
+
+#### Consul-template:
+Необходимо либо иметь токен и адрес Vault в переменных окружения:
+```
+$ export VAULT_ADDR=https://vault.service.consul:8200
+$ export VAULT_TOKEN=cb347ae0-9eb4-85d1-c556-df43e82be4b0
+```
+или добавить в конфиг строчки:
+```
+vault {
+  address = "https://vault.service.consul:8200"
+  token = "cb347ae0-9eb4-85d1-c556-df43e82be4b0"
+  renew = true
+}
+```
+и использовать секреты в своих шаблонах:
+```
+{{with secret "secret/service_name/prod/database"}}{{.Data.password}}{{end}}
+```
+Более подробно - в [readme](https://github.com/hashicorp/consul-template)
+  
+  
+Спасибо за потраченное время, надеюсь, это было полезно.  
 Готов ответить на ваши вопросы.
