@@ -1,7 +1,7 @@
 +++
-date = "2016-07-20T22:19:01+03:00"
+date = "2016-11-20T22:19:01+03:00"
 description = "Как не хранить секреты где придётся, или зачем нам Hashicorp Vault"
-draft = true
+draft = false
 tags = ["vault", "hashicorp", "security"]
 title = "Vault 101"
 topics = []
@@ -9,8 +9,8 @@ topics = []
 +++
 
 # Как не хранить секреты где придётся, или зачем нам Hashicorp Vault
-![Vault header](http://pocketstudio.jp.s3.amazonaws.com/log3/wp-content/uploads/2015/07/hahsicorp-vaule-header2-670x262.png) 
-
+![Vault header](http://pocketstudio.jp.s3.amazonaws.com/log3/wp-content/uploads/2015/07/hahsicorp-vaule-header2-670x262.png)  
+_первоначально опубликовано на https://habrahabr.ru/post/306812/_
 ## Проблема:
 Задайте себе вопрос - как правильно хранить пароль от базы данных, которая используется вашим сервисом? В отдельном репозитории с секретами? В репозитории приложения? В системе деплоя (Jenkins, Teamcity, etc)? В системе управления конфигурациями? Только на личном компьютере? Только на серверах, на которых работает ваш сервис? В некоем хранилище секретов? 
   
